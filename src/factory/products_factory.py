@@ -1,3 +1,4 @@
+from data.create_product_usecase import CreateProductUseCase
 from data.drop_product_usecase import DropProductUseCase
 from data.list_products_usecase import ListProductsUseCase
 from domain.products.drop_product_domain import DropProductDomain
@@ -16,3 +17,9 @@ def drop_product() -> DropProductDomain:
   listProductsUseCase = DropProductUseCase(productsMongoRepository)
   
   return listProductsUseCase
+
+def create_product():
+  productsMongoRepository = ProductsMongoRepository()
+  createProductUseCase = CreateProductUseCase(productsMongoRepository)
+  
+  return createProductUseCase

@@ -20,6 +20,13 @@
     <section class="container">
       <h1 class="text-center">Products</h1>
 
+      <div class="py-2">
+        <a class="btn btn-primary" href="/create">
+          <i class="bi bi-plus-circle"></i>
+          New product
+        </a>
+      </div>
+
       <table class="table table-primary table-bordered">
         <thead>
           <tr>
@@ -54,7 +61,7 @@
 
   <script>
     async function deleteProduct(id = "") {
-      const response = await fetch(`/products/${id}`, {
+      const response = await fetch(`/${id}`, {
         method: "DELETE",
       });
 

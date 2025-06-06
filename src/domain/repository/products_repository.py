@@ -10,7 +10,7 @@ class TypeProductModel(TypedDict):
 
 class ProductsRepository:
   @abstractmethod
-  def create(self) -> TypeProductModel:
+  def create(self, product: TypeProductModel) -> TypeProductModel:
     pass
   
   def list(self) -> List[TypeProductModel]:
