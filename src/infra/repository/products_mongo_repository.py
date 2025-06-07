@@ -32,6 +32,13 @@ class ProductsMongoRepository(ProductsRepository):
       
     return products
   
+  async def get_by_id(self, id) -> TypeProductModel:
+    document = self.__collection.find_one({
+      "_id": ObjectId(id)
+    })
+    
+    return self._to_dto(document)
+  
   async def delete(self, id: str):
     self.__collection.delete_one({
       "_id": ObjectId(id)

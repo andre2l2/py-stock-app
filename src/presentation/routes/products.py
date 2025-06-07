@@ -4,7 +4,7 @@ from fastapi.templating import Jinja2Templates
 from urllib.parse import parse_qs
 
 from config.directory import TEMPLATE_BASE_DIR
-from factory.products_factory import create_product, list_products, drop_product
+from factory.products_factory import create_product, get_product_by, list_products, drop_product
 
 
 router = APIRouter()
@@ -53,3 +53,17 @@ async def create(request: Request):
     })
 
     return RedirectResponse(url="/", status_code=301)
+
+
+@router.get("/update/{id}", response_class=HTMLResponse)
+async def get_products(request: Request):
+    id = request.path_params["id"]
+    
+    response = await get_product_by().execute(id)
+    
+    return templates.TemplateResponse("update_product.html", {
+      "request": request,
+      "name": response["name"],
+      "price": response["price"],
+      "total": response["stock_total"]
+    })

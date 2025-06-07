@@ -16,5 +16,8 @@ class ProductsRepository:
   def list(self) -> List[TypeProductModel]:
     pass
   
+  def get_by_id(self) -> TypeProductModel:
+    pass
+  
   def delete(self, id: str) -> List[TypeProductModel]:
     pass

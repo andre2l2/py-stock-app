@@ -10,5 +10,5 @@ class ListProductsUseCase(ListProductDomain):
     self.__productsRepository = productsRepository
   
   
-  async def execute(self) -> List[TypeProduct]:
+  async def execute(self) -> List[TypeProduct]:    
     return await self.__productsRepository.list()
