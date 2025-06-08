@@ -1,0 +1,16 @@
+version: "3.8"
+
+services:
+  my_app:
+    build: .
+    container_name: "py_stock"
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mongodb
+
+  mongodb:
+    image: mongo:8
+    container_name: mongodb_py_stock
+    ports:
+      - "27017:27017"
