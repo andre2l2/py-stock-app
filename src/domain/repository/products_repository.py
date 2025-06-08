@@ -13,11 +13,18 @@ class ProductsRepository:
   def create(self, product: TypeProductModel) -> TypeProductModel:
     pass
   
+  @abstractmethod
   def list(self) -> List[TypeProductModel]:
     pass
   
+  @abstractmethod
   def get_by_id(self) -> TypeProductModel:
     pass
   
+  @abstractmethod
   def delete(self, id: str) -> List[TypeProductModel]:
+    pass
+  
+  @abstractmethod
+  def update_by_id(self, product: TypeProductModel):
     pass

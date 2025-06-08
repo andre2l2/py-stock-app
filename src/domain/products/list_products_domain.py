@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from typing import List, TypedDict
+from typing import List
 
 from domain.products.product import TypeProduct
 

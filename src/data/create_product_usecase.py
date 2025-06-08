@@ -1,5 +1,4 @@
 from domain.products.create_product_domain import CreateProductDomain
-from domain.products.product import TypeProduct
 from domain.repository.products_repository import ProductsRepository, TypeProductModel
 
 

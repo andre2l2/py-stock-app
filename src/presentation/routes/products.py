@@ -4,7 +4,7 @@ from fastapi.templating import Jinja2Templates
 from urllib.parse import parse_qs
 
 from config.directory import TEMPLATE_BASE_DIR
-from factory.products_factory import create_product, get_product_by, list_products, drop_product
+from factory.products_factory import create_product, get_product_by, list_products, drop_product, update_product_by
 
 
 router = APIRouter()
@@ -20,7 +20,6 @@ async def get_products(request: Request):
       "items": items
     })
 
-
 @router.delete("/{id}", response_class=HTMLResponse)
 async def delete_product(request: Request):
     id = request.path_params["id"]
@@ -28,14 +27,12 @@ async def delete_product(request: Request):
   
     return RedirectResponse(url="/", status_code=301)
   
-  
 @router.get("/create", response_class=HTMLResponse)
 async def get_products(request: Request):
     return templates.TemplateResponse("create_product.html", {
       "request": request,
     })
     
-
 @router.post("/create", response_class=HTMLResponse)
 async def create(request: Request):
     body_bytes = await request.body()
@@ -54,6 +51,25 @@ async def create(request: Request):
 
     return RedirectResponse(url="/", status_code=301)
 
+@router.post("/update/{id}", response_class=HTMLResponse)
+async def get_products(request: Request):
+    body_bytes = await request.body()
+    body_str = body_bytes.decode('utf-8')
+    form_dict = parse_qs(body_str)
+  
+    id = request.path_params["id"]
+    name = form_dict.get('name', [""])[0]
+    price = form_dict.get('price', [""])[0]
+    stock_total = form_dict.get('total', [""])[0]
+    
+    await update_product_by().execute({
+      "id": id,
+      "name": name,
+      "price": price,
+      "stock_total": stock_total,
+    })
+    
+    return RedirectResponse(url="/", status_code=301)
 
 @router.get("/update/{id}", response_class=HTMLResponse)
 async def get_products(request: Request):
@@ -63,7 +79,9 @@ async def get_products(request: Request):
     
     return templates.TemplateResponse("update_product.html", {
       "request": request,
+      "id": response["id"],
       "name": response["name"],
       "price": response["price"],
       "total": response["stock_total"]
     })
+  

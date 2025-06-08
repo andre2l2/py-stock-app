@@ -2,6 +2,7 @@ from data.create_product_usecase import CreateProductUseCase
 from data.drop_product_usecase import DropProductUseCase
 from data.get_product_by_usecase import GetProductByUseCase
 from data.list_products_usecase import ListProductsUseCase
+from data.update_product_usecase import UpdateProductUseCase
 from domain.products.create_product_domain import CreateProductDomain
 from domain.products.drop_product_domain import DropProductDomain
 from domain.products.get_product_by_domain import GetProductByDomain
@@ -32,3 +33,9 @@ def get_product_by() -> GetProductByDomain:
   getProductByUseCase = GetProductByUseCase(productsMongoRepository)
   
   return getProductByUseCase
+
+def update_product_by():
+  productsMongoRepository = ProductsMongoRepository()
+  updateProductUseCase = UpdateProductUseCase(productsMongoRepository)
+  
+  return updateProductUseCase

@@ -44,3 +44,12 @@ class ProductsMongoRepository(ProductsRepository):
       "_id": ObjectId(id)
     })
     
+  async def update_by_id(self, product: TypeProductModel):
+    self.__collection.update_one({ "_id": ObjectId(product["id"]) }, {
+      "$set": {
+        "name": product["name"],
+        "price": product["price"],
+        "stock_total": product["stock_total"]
+      }
+    })
+    
