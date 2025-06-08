@@ -1,6 +1,6 @@
 <div align="center">
   <img src="./public/img/logo.svg" >
-  <p>Automatic backup environments</p>
+  <p>Py-Stock-App</p>
 </div>
 
 This is a project for control products stock with python and jinja2, next bellow
