@@ -1,4 +1,7 @@
-# Python stock app!
+<div align="center">
+  <img src="./public/img/logo.svg" >
+  <p>Automatic backup environments</p>
+</div>
 
 This is a project for control products stock with python and jinja2, next bellow
 you can check the example:
